@@ -1,0 +1,26 @@
+<div class="outer-container">
+  <div class="container">
+    <div class="cart-header"><app-cart-header></app-cart-header></div>
+    <div class="cart-main">
+      <!-- <div class="cart-heading">Cart</div> -->
+      <div class="restaurant-name">My Restaurant</div>
+      <div class="cart-items">
+        <app-cart-item
+          [cartItems]="cartItems"
+          [userId]="userId"
+          [estimatedTime]="estimatedTime"
+          [estimatedDistance]="estimatedDistance"
+          (totalCost)="totalCostCalculated($event)"
+          (combinedFoodCartItems)="foodCartItems($event)"
+          *ngIf="dataFetched"
+        ></app-cart-item>
+      </div>
+    </div>
+    <div class="place-order">
+      <app-place-order
+        [totalCost]="totalCost"
+        [combinedFoodCart]="combinedFoodCart"
+      ></app-place-order>
+    </div>
+  </div>
+</div>

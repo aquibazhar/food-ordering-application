@@ -1,0 +1,99 @@
+<div class="container">
+  <div class="card-container" *ngFor="let foodItem of foodItems">
+    <div class="inner-container">
+      <div class="card-image">
+        <img
+          [src]="foodItem.image.image"
+          [alt]="foodItem.image.imageName"
+          class="food-image"
+        />
+        <div class="veg" *ngIf="foodItem.food.mealType === 'Vegetarian'">
+          <img src="/assets/veg.png" alt="" class="veg-image" />
+        </div>
+        <div
+          class="non-veg"
+          *ngIf="foodItem.food.mealType === 'Non-Vegetarian'"
+        >
+          <img src="/assets/non-veg.png" alt="" class="non-veg-image" />
+        </div>
+      </div>
+      <div class="food-description">
+        <div class="food-name">{{ foodItem.food.foodName }}</div>
+        <div class="food-price">₹{{ foodItem.price }}</div>
+        <div class="description">
+          {{ foodItem.description }}
+        </div>
+      </div>
+      <div
+        class="plus-button"
+        *ngIf="
+          parentComponent === 'order' && foodCartMap.get(foodItem.id)! === 0
+        "
+      >
+        <button class="add-btn" matRipple (click)="firstAdd(foodItem.id)">
+          <div class="button-text">Add</div>
+          <div class="plus">+</div>
+        </button>
+      </div>
+      <div
+        class="frequency-buttons"
+        *ngIf="parentComponent === 'order' && foodCartMap.get(foodItem.id)! > 0"
+      >
+        <div class="add-one">
+          <button
+            class="add-one-btn"
+            matRipple
+            (click)="removeOne(foodItem.id)"
+          >
+            -
+          </button>
+        </div>
+        <div class="food-quantity">{{ foodCartMap.get(foodItem.id) }}</div>
+        <div class="remove-one">
+          <button
+            class="remove-one-btn"
+            matRipple
+            (click)="addMoreThanOne(foodItem.id)"
+          >
+            +
+          </button>
+        </div>
+      </div>
+      <div class="delete-button">
+        <button
+          mat-flat-button
+          color="warn"
+          class="delete-btn"
+          (click)="onItemDelete(foodItem.id)"
+          *ngIf="parentComponent === 'form-three'"
+        >
+          Delete
+        </button>
+        <button
+          *ngIf="parentComponent === 'dashboard' && foodItems.length > 1"
+          mat-flat-button
+          color="warn"
+          class="delete-btn"
+          (click)="onItemDelete(foodItem.id)"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="container">
+  <div class="card-container">
+    <div class="card-image">
+      <img src="assets/header-background.jpg" class="food-image" />
+      <div class="veg" *ngIf="mealType === 'Vegetarian'">
+        <img src="/assets/veg.png" alt="" class="veg-image" />
+      </div>
+    </div>
+    <div class="food-description">
+      <div class="food-name">Aloo Paratha With Curd [Serve 1]</div>
+      <div class="food-price">₹70</div>
+      <div class="description">Aloo Paratha With Curd</div>
+    </div>
+  </div>
+</div> -->

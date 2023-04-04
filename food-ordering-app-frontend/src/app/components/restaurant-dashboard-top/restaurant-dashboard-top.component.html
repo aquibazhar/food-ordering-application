@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="flow-uri" *ngIf="parentComponent === 'order-page'">
+    <div class="flow-value">Home</div>
+    <div class="separator">/</div>
+    <div class="flow-value">India</div>
+    <div class="separator">/</div>
+    <div class="flow-value">{{ restaurant.address.state }}</div>
+    <div class="separator">/</div>
+    <div class="flow-value">{{ restaurant.address.city }}</div>
+    <div class="separator">/</div>
+    <div class="flow-value">{{ restaurant.address.locality }}</div>
+    <div class="separator">/</div>
+    <div class="flow-value">Order Online</div>
+  </div>
+  <div class="flow-uri" *ngIf="parentComponent === 'dashboard'">
+    <div class="flow-value">Home</div>
+    <div class="separator">/</div>
+    <div class="flow-value">Partner with us</div>
+    <div class="separator">/</div>
+    <div class="flow-value">Listed restaurant</div>
+    <div class="separator">/</div>
+    <div class="flow-value">Dashboard view</div>
+  </div>
+  <div class="restaurant-image">
+    <img
+      src="{{ restaurant.image }}"
+      alt="restaurant-background"
+      class="restaurant-img"
+    />
+  </div>
+  <div class="heading">
+    <div class="restaurant-name">{{ restaurant.name }}</div>
+    <div class="restaurant-description">
+      {{ restaurant.description | cuisineSeparator }}
+    </div>
+    <div class="restaurant-address">
+      {{ restaurant.address.locality }}, {{ restaurant.address.city }}
+    </div>
+  </div>
+</div>

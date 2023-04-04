@@ -1,0 +1,34 @@
+.container{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;  
+  
+}
+
+
+.cart-heading{
+    font-size: 30px;
+    margin:30px 0px;
+}
+
+.cart-main{
+    margin: 30px;
+}
+
+.restaurant-name{
+    font-size: 25px;
+    margin-bottom: 40px;
+}
+
+.outer-container{
+    background-color: #F9F9FF;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    height: auto;
+    padding-bottom: 100px;
+}
+
+.place-order{
+    margin: 30px;
+}

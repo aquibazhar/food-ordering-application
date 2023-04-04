@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="order-heading">Order Online</div>
+  <div class="inner-container">
+    <div class="left">
+      <mat-nav-list #items>
+        <a
+          matRipple
+          matRippleColor="#fff0f2"
+          mat-list-item
+          *ngFor="let item of listItems"
+          [class.selected]="item === selectedItem"
+          (click)="onItemClick(item)"
+        >
+          <div class="list-content">{{ item }} (5)</div>
+        </a>
+      </mat-nav-list>
+    </div>
+    <div class="right">
+      <div class="right-top">
+        <div class="heading">Order Online</div>
+        <span class="right-spacer"></span>
+        <div class="search">
+          <mat-form-field class="search-form-field" appearance="outline">
+            <mat-label>Search menu items</mat-label>
+            <input matInput type="text" [(ngModel)]="searchInput" />
+            <button
+              *ngIf="searchInput"
+              matSuffix
+              mat-icon-button
+              aria-label="Clear"
+              (click)="searchInput = ''"
+            >
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="right-bottom">
+        <div class="food-type">Starter</div>
+        <div class="menu-items">
+          <app-menu-item></app-menu-item>
+          <app-menu-item></app-menu-item>
+          <app-menu-item></app-menu-item>
+          <app-menu-item></app-menu-item>
+          <app-menu-item></app-menu-item>
+          <app-menu-item></app-menu-item>
+          <app-menu-item></app-menu-item>
+          <app-menu-item></app-menu-item>
+          <app-menu-item></app-menu-item>
+          <app-menu-item></app-menu-item>
+          <app-menu-item></app-menu-item>
+          <app-menu-item></app-menu-item>
+          <app-menu-item></app-menu-item>
+          <app-menu-item></app-menu-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

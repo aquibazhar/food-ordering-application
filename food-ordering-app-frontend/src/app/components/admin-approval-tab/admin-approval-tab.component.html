@@ -1,0 +1,37 @@
+<div class="dashboad">
+  <div
+    class="inner-container"
+    *ngFor="let restaurant of restaurants; let i = index"
+  >
+    <div class="restaurant" *ngIf="!restaurant.approvalStatus">
+      <div class="index">{{ i + 1 }}</div>
+      <div class="restaurant-image">
+        <img src="{{ restaurant.image }}" alt="" class="restaurant-img" />
+      </div>
+      <div class="restaurant-name">{{ restaurant.name }}</div>
+      <div class="restaurant-address">
+        {{ restaurant.address.houseNumber }}, {{ restaurant.address.locality }},
+        {{ restaurant.address.city }}, {{ restaurant.address.state }},
+        {{ restaurant.address.pincode }}
+      </div>
+      <div class="mobile-number">{{ restaurant.mobileNumber }}</div>
+      <div class="buttons">
+        <div class="accept-button">
+          <button
+            class="accept-btn"
+            mat-flat-button
+            color="primary"
+            (click)="onApprove(restaurant.id)"
+          >
+            Approve
+          </button>
+        </div>
+        <!-- <div class="reject-button">
+          <button class="reject-btn" mat-flat-button color="warn">
+            Reject
+          </button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>

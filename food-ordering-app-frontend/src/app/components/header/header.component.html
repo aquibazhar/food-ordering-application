@@ -1,0 +1,31 @@
+<mat-toolbar color="primary">
+  <span>foody</span>
+  <span class="example-spacer"></span>
+  <button mat-button class="example-icon favorite-icon">
+    <span>Add restaurant</span>
+  </button>
+  <button
+    mat-button
+    class="example-icon favorite-icon"
+    (click)="openSigninDialog()"
+    *ngIf="!isLoggedIn"
+  >
+    <span>Login</span>
+  </button>
+  <button
+    mat-button
+    class="example-icon favorite-icon"
+    (click)="logout()"
+    *ngIf="isLoggedIn"
+  >
+    <span>Logout</span>
+  </button>
+  <button
+    mat-button
+    class="example-icon favorite-icon"
+    (click)="openSignUpDialog()"
+    *ngIf="!isLoggedIn"
+  >
+    <span>Sign up</span>
+  </button>
+</mat-toolbar>

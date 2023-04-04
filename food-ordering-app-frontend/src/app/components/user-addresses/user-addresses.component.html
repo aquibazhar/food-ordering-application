@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="heading">My addresses</div>
+  <div class="inner-container">
+    <div class="add-address-card" matRipple (click)="openAddAdressDialog()">
+      <div class="add-icon">
+        <mat-icon>add_circle</mat-icon>
+      </div>
+      <div class="add-address-text">Add address</div>
+    </div>
+    <div class="address-card" *ngFor="let address of userAddresses">
+      <div class="city-name">{{ address.city }}</div>
+      <div class="full-address">
+        {{ address.houseNumber }}, {{ address.locality }}, {{ address.city }},
+        {{ address.state }}, {{ address.pincode }}
+      </div>
+      <div class="buttons">
+        <div class="edit-button" (click)="openEditAddressDialog(address)">
+          Edit
+        </div>
+        <div class="delete-button" (click)="onDelete(address.id)">Delete</div>
+      </div>
+    </div>
+    <div class="card"></div>
+  </div>
+</div>

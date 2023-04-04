@@ -1,0 +1,108 @@
+.container {
+  height: 80px;
+  border-bottom: 1px solid rgba(230, 230, 230, 0.8);
+}
+
+.app-title {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.header-spacer {
+  flex: 1 1 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0px 170px;
+}
+
+.account-btn mat-icon {
+  font-size: 45px;
+  height: 45px;
+  width: 45px;
+  color: #505050;
+}
+
+.search-input-field {
+  width: 600px;
+  height: 45px;
+  border-radius: 0px 10px 10px 0px;
+  border: none;
+  text-decoration: none;
+  font-size: 16px;
+  border: 1px solid rgba(192, 192, 192, 0.8);
+  border-left: none;
+}
+
+.search-input {
+  position: relative;
+  margin-left: 45px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 0;
+  left: -45px;
+  background-color: white;
+  display: flex;
+  height: 47px;
+  width: 35px;
+  align-items: center;
+  border-radius: 10px 0px 0px 10px;
+  padding-left: 10px;
+  margin-right: 20px;
+  border: 1px solid rgba(192, 192, 192, 0.8);
+  border-right: none;
+}
+
+.search-icon mat-icon {
+  font-size: 25px;
+}
+
+.search input:focus {
+  outline: none;
+}
+
+.headers{
+  font-size: 16px;
+  font-weight: 400;
+  color:  rgba(100, 100, 100, 1) !important;
+}
+
+/* MAT-OPTION */
+
+.food-image{
+  height: 70px;
+  width: 70px;
+ 
+}
+
+.food-image img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  display: block; border-radius: 10px;
+
+}
+
+.food-options{
+  display: flex;
+  gap: 20px;
+  padding: 10px 0px;
+}
+
+.food-name{
+  color: #252525;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.food-cuisine{
+  color: #404040;
+  font-weight: 300;
+}
+
+/* MAT-OPTION */

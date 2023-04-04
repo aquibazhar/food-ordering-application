@@ -1,0 +1,200 @@
+
+
+.inner-container{
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.card-image {
+  height: 135px;
+  width: 135px;
+  position: relative;
+}
+
+.food-image {
+  display: block;
+  height: 135px;
+  width: 135px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.food-description {
+  width: 70%;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.food-name {
+  font-size: 22px;
+}
+
+.food-price {
+  font-size: 16px;
+  color: #505050;
+  font-weight: 300;
+}
+
+.description {
+  font-size: 16px;
+  color: #303030;
+  font-weight: 300;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 20px;
+}
+
+.veg {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  right: 7px;
+  top: 7px;
+  background-color: white;
+}
+
+.veg-image {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.non-veg {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  right: 7px;
+  top: 7px;
+  background-color: white;
+}
+
+.non-veg-image {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.delete-button {
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.delete-btn {
+  display: block;
+  margin-bottom: 40px;
+}
+
+/* ADD BUTTON */
+
+/* a.selected .list-content {
+  color: #f1626f;
+}
+
+a.selected ::ng-deep .mat-ripple-element {
+  background-color: #fff0f2 !important;
+  z-index: -1;
+} */
+
+.plus-button{
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.add-btn {
+  border: 1px solid #f1626f;
+  background-color: #fff0f2;
+  color: #f1626f;
+  height: 40px;
+  width: 120px;
+  border-radius: 5px;
+  position: relative;
+  display: block;
+  margin-bottom: 40px;
+  
+}
+
+.add-btn:hover{
+  background-color: #f6cdd2 !important;
+}
+
+.button-text {
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: uppercase;
+
+}
+
+
+.plus {
+  position: absolute;
+  top: 0px;
+  right: 4px;
+  font-size: 18px;
+  font-weight: 400 !important;
+}
+
+/* ADD BUTTON */
+
+/* ADD/REMOVE BUTTON */
+
+
+.frequency-buttons{
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-bottom: 65px;
+  display: flex;
+  border: 1px solid #f1626f;
+  padding: 0px;
+  height: 42px;
+  width: 130px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  background-color: #f1626f;color: white;
+}
+
+.add-one{
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.remove-one{
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.add-one-btn{
+ border: none;
+ background-color: transparent;
+ width: 100%;
+ height: 100%;color: white;
+}
+
+.remove-one-btn{
+ border: none;
+ background-color: transparent;
+ width: 100%;
+ height: 100%;color: white;
+}
+
+/* ADD/REMOVE BUTTON */
+
+
+
+

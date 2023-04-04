@@ -1,0 +1,119 @@
+.container{
+    margin-top: 20px;
+}
+
+.heading {
+    font-size: 24px;
+  
+  }
+
+.order-card{
+    box-sizing: border-box;
+    width: 350px;
+    height: auto;
+    padding: 15px;
+    border: 1px solid #dad7d7;
+    border-radius: 10px;
+}
+
+.top{
+    display: flex;
+    width: 100%;
+    /* gap: 10px; */
+    align-items: flex-start;
+    justify-content: space-between;
+    height: auto;
+}
+
+.restaurant-image{
+    width: 30%;
+    height: 50px;    
+    width: 50px;    
+    border-radius: 10px;
+}
+
+.restaurant-image .restaurant-img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 10px;
+}
+
+.restaurant-details{
+    width: 50%;
+}
+
+.restaurant-details .restaurant-name{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+
+    font-size: 18px;
+}
+.restaurant-details .restaurant-address{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+
+    font-weight: 300;
+    color: gray;
+}
+
+
+
+.order-status{
+    width: 20%;
+}
+
+.custom-divider{
+    margin-left: auto;
+    margin-right: auto;
+    width: 99%;
+    height: 1px;
+    background-color: #dad7d7;
+    margin:10px 0px;
+}
+
+.bottom{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.order-headings{
+    color: gray;
+    letter-spacing: 3px;
+    font-size: 13px;
+    
+}
+
+.order-values{
+    font-size: 14px;
+}
+
+/* .order-value{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+} */
+
+
+.items-section .items{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.inner-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}

@@ -1,0 +1,69 @@
+.inner-container {
+ 
+}
+
+.container{
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid white;
+  padding: 8px;
+  width: 330px;
+}
+
+.card-container:hover {
+  border-radius: 20px;
+  /* border: 1px solid black; */
+  background-color: white;
+  box-shadow: 0px 0px 15px gray;
+}
+
+.card-image {
+  height: 250px;
+  width: 330px;
+  border-radius: 20px;
+}
+
+.card-img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.card-details {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 5px;
+  width: 100%;
+}
+
+.restaurant-name {
+  font-size: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.restaurant-cuisine {
+  font-weight: 300;
+  color: #505050;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}

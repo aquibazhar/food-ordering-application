@@ -1,0 +1,35 @@
+<div class="container">
+  <div mat-dialog-title class="heading">
+    <span class="signin-heading">Select delivery address</span>
+    <span class="header-spacer"></span>
+    <span class="close">
+      <button mat-icon-button mat-dialog-close class="close-btn" tabindex="-1">
+        <mat-icon class="close-icon">close</mat-icon>
+      </button>
+    </span>
+  </div>
+  <div class="center">
+    <div class="address-container">
+      <mat-radio-group class="address-container" [(ngModel)]="selectedAddress">
+        <mat-radio-button
+          class="address"
+          *ngFor="let address of data.addresses; let i = index"
+          [value]="i"
+        >
+          <div class="radio-label">
+            {{ address.houseNumber }}, {{ address.locality }},
+            {{ address.city }}, {{ address.state }}, {{ address.pincode }}
+          </div>
+        </mat-radio-button>
+      </mat-radio-group>
+      <button
+        color="primary"
+        mat-raised-button
+        class="select-address"
+        (click)="onSelect()"
+      >
+        Select Address
+      </button>
+    </div>
+  </div>
+</div>

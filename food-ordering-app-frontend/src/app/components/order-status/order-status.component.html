@@ -1,0 +1,99 @@
+<div class="outer-container">
+  <div class="container">
+    <div class="cart-header"><app-cart-header></app-cart-header></div>
+    <div class="order-main">
+      <div
+        class="status-container ordered"
+        *ngIf="order.orderStatus === 'Ordered'"
+      >
+        <div class="restaurant-name">{{ restaurant.name }}</div>
+        <div class="order-status">
+          Waiting for confirmation from {{ restaurant.name }}
+        </div>
+      </div>
+      <div
+        class="status-container accepted"
+        *ngIf="order.orderStatus === 'Preparing'"
+      >
+        <div class="restaurant-name">{{ restaurant.name }}</div>
+
+        <div class="order-status">Preparing your order</div>
+
+        <div class="delivery-time" *ngIf="estimatedTime < 2">
+          Arriving in {{ estimatedTime }} minute
+        </div>
+        <div class="delivery-time" *ngIf="estimatedTime > 1">
+          Arriving in {{ estimatedTime }} minute
+        </div>
+      </div>
+      <div
+        class="status-container accepted"
+        *ngIf="order.orderStatus === 'Picked'"
+      >
+        <div class="restaurant-name">{{ restaurant.name }}</div>
+
+        <div class="order-status">Order picked up on time</div>
+
+        <div class="delivery-time" *ngIf="estimatedTime < 2">
+          Arriving in {{ estimatedTime }} minute
+        </div>
+        <div class="delivery-time" *ngIf="estimatedTime > 1">
+          Arriving in {{ estimatedTime }} minute
+        </div>
+      </div>
+      <div
+        class="status-container accepted"
+        *ngIf="order.orderStatus === 'Delivered'"
+      >
+        <div class="restaurant-name">{{ restaurant.name }}</div>
+
+        <div class="order-status">Order delivered on time 😊</div>
+      </div>
+      <div class="map-container">
+        <div id="map"></div>
+      </div>
+      <div class="order-summary-container">
+        <div class="order-card">
+          <div class="order-number-section">
+            <div class="order-number-text order-headings">ORDER NUMBER</div>
+            <div class="order-number order-values">
+              {{ order.id }}
+            </div>
+          </div>
+          <div class="total-amount-section">
+            <div class="total-amount-text order-headings">TOTAL AMOUNT</div>
+            <div class="total-amount order-values">₹{{ order.price }}</div>
+          </div>
+          <div class="items-section">
+            <div class="items-text order-headings">ITEMS</div>
+            <span
+              class="items order-values"
+              *ngFor="let orderCart of combinedFoodCart"
+            >
+              {{ orderCart.quantity }} x {{ orderCart.foodItem.food.foodName }}
+            </span>
+          </div>
+          <div class="ordered-on-section">
+            <div class="ordered-on-text order-headings">ORDERED ON</div>
+            <div class="ordered-on order-values">
+              {{ order.orderedOn | date }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="redirect-container" *ngIf="order.orderStatus === 'Delivered'">
+    <mat-progress-bar
+      class="progress-bar"
+      mode="determinate"
+      [value]="100 * 10 - redirectingIn"
+      [ngStyle]="{ 'background-color': '#bff0c7' }"
+    ></mat-progress-bar>
+    <div class="redirect-notice">
+      Your order has been delivered successfully. You will be redirected to the
+      home page in {{ timeTransform(redirectingIn) }} seconds.
+    </div>
+  </div>
+</div>
+<!-- 990/10=99%10 -->

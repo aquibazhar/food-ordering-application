@@ -1,0 +1,9 @@
+<app-home-header [restaurantOptions]="restaurants"></app-home-header>
+<mat-progress-bar
+  *ngIf="loadingFlag"
+  mode="indeterminate"
+  [ngStyle]="{ 'background-color': '#FEF0F2' }"
+></mat-progress-bar>
+<app-home-cards
+  (restaurantsFetched)="onRestaurantsFetched($event)"
+></app-home-cards>

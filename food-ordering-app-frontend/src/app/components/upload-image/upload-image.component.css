@@ -1,0 +1,72 @@
+.drop-files-her{
+    height: 100px;
+}
+
+
+::ng-deep .drop-files-here {
+    width: 100%;
+    height: 300px;
+    margin: 0px;
+    border: 1px dotted gray;
+    border-radius: 5px;
+  }
+  
+  ::ng-deep ngx-file-drop .drop-zone {
+    display: flex;
+    background-color: transparent !important;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+
+    font-size: 16px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+  }
+
+  .drag-text{
+    font-weight: 300;    color: gray;
+  }
+
+  .top-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  .center{
+    box-sizing: border-box;
+    border: 2px dotted rgb(38,110,239);
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 45px;
+    padding: 10px;
+    border-radius: 5px;
+    flex-direction: column;
+    background-color: rgb(247,250,254);
+  }
+
+
+
+  .browse-btn{
+    display: block;
+    background: none;
+    text-decoration: underline;
+    border: none;
+    font-size: 16px;
+  }
+
+  .camera-icon mat-icon {
+    color:  rgb(38,110,239);
+  }
+
+  .center-text{
+    font-size: 14px;
+    font-weight: 400;
+    color:  rgb(38,110,239);;
+  }

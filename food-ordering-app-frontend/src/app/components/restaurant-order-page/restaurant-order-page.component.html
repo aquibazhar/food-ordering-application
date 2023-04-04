@@ -1,0 +1,9 @@
+<app-restaurant-dashboard-header></app-restaurant-dashboard-header>
+<div class="container">
+  <app-restaurant-dashboard-top
+    [restaurant]="restaurant"
+  ></app-restaurant-dashboard-top>
+  <app-restaurant-order-bottom
+    *ngIf="dataFetched"
+  ></app-restaurant-order-bottom>
+</div>

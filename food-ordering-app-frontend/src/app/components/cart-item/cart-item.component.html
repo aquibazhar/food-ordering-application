@@ -1,0 +1,110 @@
+<div class="container">
+  <div class="outer-container">
+    <div class="delivery-container">
+      <div class="time-icon">
+        <mat-icon>timer</mat-icon>
+      </div>
+      <div class="delivery-text">
+        Delivery in
+        <span class="time">
+          {{ estimatedTime + preparationTime }}-{{
+            estimatedTime + preparationTime + 5
+          }}
+          mins</span
+        >
+      </div>
+    </div>
+  </div>
+  <div class="container-heading-1">
+    <div class="line"></div>
+    <div class="content">Cart</div>
+    <div class="line"></div>
+  </div>
+  <div class="outer-container">
+    <div class="inner-card-container" *ngFor="let foodCart of combinedFoodCart">
+      <div class="card-container" *ngIf="foodCart.quantity > 0">
+        <div class="card-image">
+          <img
+            [src]="foodCart.foodItem.image.image"
+            [alt]="foodCart.foodItem.image.imageName"
+            class="food-image"
+          />
+          <div
+            class="veg"
+            *ngIf="foodCart.foodItem.food.mealType === 'Vegetarian'"
+          >
+            <img src="/assets/veg.png" alt="" class="veg-image" />
+          </div>
+          <div
+            class="non-veg"
+            *ngIf="foodCart.foodItem.food.mealType === 'Non-Vegetarian'"
+          >
+            <img src="/assets/non-veg.png" alt="" class="non-veg-image" />
+          </div>
+        </div>
+        <div class="food-description">
+          <div class="food-name">{{ foodCart.foodItem.food.foodName }}</div>
+          <div class="food-price">₹{{ foodCart.foodItem.price }}</div>
+          <div class="description">
+            {{ foodCart.foodItem.description }}
+          </div>
+        </div>
+        <div class="frequency-buttons">
+          <div class="remove-one">
+            <button
+              class="remove-one-btn"
+              matRipple
+              (click)="removeOne(foodCart)"
+            >
+              -
+            </button>
+          </div>
+          <div class="food-quantity">
+            {{ foodCart.quantity }}
+          </div>
+          <div class="add-one">
+            <button class="add-one-btn" matRipple (click)="addOne(foodCart)">
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-heading-2">
+    <div class="line"></div>
+    <div class="content">Bill Summary</div>
+    <div class="line"></div>
+  </div>
+  <div class="outer-container">
+    <div class="inner-subtotal-container">
+      <div class="row row-1">
+        <div class="subtotal">Subtotal</div>
+        <div class="summary-spacer"></div>
+        <div class="subtotal">₹{{ grandTotal }}</div>
+      </div>
+      <div class="row row-2">
+        <div class="delivery-fee-text">
+          <div class="delivery-icon"><mat-icon>two_wheeler</mat-icon></div>
+          <div class="delivery-fee-content">
+            <div class="content">
+              Delivery partner fee for
+              {{ estimatedDistance | distanceEstimation }}
+            </div>
+            <div class="subtitle">
+              fully goes to them for their time and effort
+            </div>
+          </div>
+        </div>
+        <div class="summary-spacer"></div>
+        <div class="delivery-fee">₹{{ deliveryFee }}</div>
+      </div>
+      <div class="summary-divider"></div>
+      <div class="row row-3">
+        <div class="grand-total-text">Grand Total</div>
+        <div class="summary-spacer"></div>
+        <div class="grand-total">₹{{ grandTotal + deliveryFee }}</div>
+      </div>
+    </div>
+  </div>
+</div>

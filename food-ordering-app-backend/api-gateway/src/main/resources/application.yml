@@ -1,0 +1,70 @@
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      default-zone: http://localhost:8761/eureka
+server:
+  port: 8762
+  
+  
+#management:
+# health:
+#  circuitbreakers:
+#   enabled: true
+# endpoints:
+#  web:
+#   exposure:
+#    include: health
+# endpoint:
+#  health:
+#   show-details: always
+  
+  
+
+  
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      default-filters:
+      - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            
+      routes:
+      - id: user-service
+        uri: lb://user-service
+        predicates:
+        - Path=/api/v1/user/**
+        
+      - id: restaurant-service
+        uri: lb://restaurant-service
+        predicates:
+        - Path=/api/v1/restaurant/**
+        
+      - id: order-service
+        uri: lb://order-service
+        predicates:
+        - Path=/api/v1/order/**
+        
+      - id: food-item-service
+        uri: lb://food-item-service
+        predicates:
+        - Path=/api/v1/foodItem/**
+        
+      - id: cart-service
+        uri: lb://cart-service
+        predicates:
+        - Path=/api/v1/cart/**
+        
+      - id: admin-service
+        uri: lb://admin-service
+        predicates:
+        - Path=/api/v1/admin/**

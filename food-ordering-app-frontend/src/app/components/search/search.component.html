@@ -1,0 +1,50 @@
+<mat-progress-bar
+  *ngIf="loadingFlag"
+  mode="indeterminate"
+  [ngStyle]="{ 'background-color': '#FEF0F2' }"
+></mat-progress-bar>
+<app-restaurant-dashboard-header
+  [restaurantOptions]="nearbyRestaurants"
+  page="search"
+></app-restaurant-dashboard-header>
+<div class="container">
+  <div class="flow-uri">
+    <div class="flow-value">Home</div>
+    <div class="separator">/</div>
+    <div class="flow-value">India</div>
+    <div class="separator">/</div>
+    <div class="flow-value">{{ userAddress.state }}</div>
+    <div class="separator">/</div>
+    <div class="flow-value">{{ userAddress.city }}</div>
+    <div class="separator">/</div>
+    <div class="flow-value">{{ userAddress.locality }}</div>
+    <div class="separator">/</div>
+    <div class="flow-value">{{ searchInput }}</div>
+  </div>
+  <div class="top-tab">
+    <div class="tab-content">
+      <div class="tab-icon">
+        <mat-icon>two_wheeler</mat-icon>
+      </div>
+      <div class="tab-text">Delivery</div>
+    </div>
+  </div>
+  <mat-divider class="top-divider"></mat-divider>
+
+  <!-- <div class="filter-container">Filter</div> -->
+
+  <div class="main-content">
+    <div class="content-heading">
+      Delivery Restaurants in {{ userAddress.locality }}
+    </div>
+    <div class="restaurant-cards">
+      <app-search-card
+        [restaurants]="filteredNearbyRestaurants"
+      ></app-search-card>
+    </div>
+  </div>
+  <div class="no-results">
+    <div class="end-results">End of search results</div>
+    <div class="result-icon"><mat-icon> search </mat-icon></div>
+  </div>
+</div>

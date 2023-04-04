@@ -1,0 +1,90 @@
+<div class="container">
+  <div mat-dialog-title class="heading">
+    <span class="signin-heading">Add Default Address</span>
+    <span class="header-spacer"></span>
+    <span class="close">
+      <button mat-icon-button mat-dialog-close class="close-btn" tabindex="-1">
+        <mat-icon class="close-icon">close</mat-icon>
+      </button>
+    </span>
+  </div>
+  <div class="center">
+    <form [formGroup]="userAddress" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="signin-form-field">
+        <mat-label>Enter house number</mat-label>
+        <input
+          matInput
+          formControlName="houseNumber"
+          placeholder="Enter house number"
+          type="text"
+          class="houseNumber"
+        />
+        <mat-error *ngIf="userAddress.get('houseNumber')?.hasError('required')">
+          House number is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="signin-form-field">
+        <mat-label>Enter locality</mat-label>
+        <input
+          matInput
+          formControlName="locality"
+          placeholder="Enter locality"
+          type="text"
+          class="locality"
+        />
+        <mat-error *ngIf="userAddress.get('locality')?.hasError('required')">
+          Locality is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="signin-form-field">
+        <mat-label>Enter city</mat-label>
+        <input
+          matInput
+          formControlName="city"
+          placeholder="Enter city"
+          type="text"
+          class="city"
+        />
+
+        <mat-error *ngIf="userAddress.get('city')?.hasError('required')">
+          City is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="signin-form-field">
+        <mat-label>Enter state</mat-label>
+        <input
+          matInput
+          formControlName="state"
+          placeholder="Enter state"
+          type="text"
+          class="state"
+        />
+        <mat-error *ngIf="userAddress.get('state')?.hasError('required')">
+          State is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="signin-form-field">
+        <mat-label>Pincode</mat-label>
+        <input matInput placeholder="Pincode" formControlName="pincode" />
+        <mat-error *ngIf="userAddress.get('pincode')?.hasError('required')">
+          Please enter the pincode.
+        </mat-error>
+        <mat-error *ngIf="userAddress.get('pincode')?.hasError('pattern')">
+          Pincode must contain digits and should be of 6 digits.
+        </mat-error>
+        <mat-error *ngIf="userAddress.get('pincode')?.hasError('minlength')">
+          Pincode must contain atleast six digits.
+        </mat-error>
+      </mat-form-field>
+      <button
+        [disabled]="!userAddress.valid"
+        type="submit"
+        color="primary"
+        mat-raised-button
+        class="create-button"
+      >
+        Add Address
+      </button>
+    </form>
+  </div>
+</div>

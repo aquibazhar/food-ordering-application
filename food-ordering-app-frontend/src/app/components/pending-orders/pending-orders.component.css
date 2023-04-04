@@ -1,0 +1,74 @@
+.container {
+  margin-top: 20px;
+  padding-bottom: 100px;
+}
+
+.inner-container {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.inner-order-card {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  height: auto;
+  align-items: center;
+  box-sizing: border-box;
+  /* flex-wrap: wrap; */
+  justify-content: space-around;
+  width: 100%;
+  border: 1px solid rgb(242, 240, 240);
+  padding: 20px 0px;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: #fcfafa;
+}
+
+.order-number {
+  width: 10%;
+  text-align: center;
+}
+
+.food-items {
+  width: 20%;
+  /* text-align: start; */
+}
+
+.food-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.customer-name {
+  width: 15%;
+  text-align: center;
+}
+
+.user-address {
+  width: 35%;
+}
+
+.accept-reject {
+  width: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.accept-btn {
+  background-color: #047733eb !important;
+}
+
+.reject-btn {
+  background-color: #ef5765 !important;
+}
+
+.show-status {
+  margin-top: 20px;
+  width: 22%;
+}

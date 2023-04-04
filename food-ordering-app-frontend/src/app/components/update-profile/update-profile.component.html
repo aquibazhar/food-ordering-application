@@ -1,0 +1,76 @@
+<div class="container">
+  <div mat-dialog-title class="heading">
+    <span class="signup-heading">Edit profile</span>
+    <span class="header-spacer"></span>
+    <span class="close">
+      <button mat-icon-button mat-dialog-close class="close-btn" tabindex="-1">
+        <mat-icon class="close-icon">close</mat-icon>
+      </button>
+    </span>
+  </div>
+  <div class="center">
+    <form [formGroup]="updateProfile" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="signin-form-field">
+        <mat-label>Full Name</mat-label>
+        <input
+          matInput
+          formControlName="fullName"
+          placeholder="Update your full name"
+          type="text"
+          class="email"
+          [value]="updateProfile.value.fullName"
+        />
+
+        <mat-error *ngIf="updateProfile.get('fullName')?.hasError('required')">
+          Full Name is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="signin-form-field">
+        <mat-label>Enter your email</mat-label>
+        <input
+          matInput
+          formControlName="email"
+          placeholder="Enter your email"
+          type="text"
+          class="email"
+        />
+        <mat-error *ngIf="updateProfile.get('email')?.hasError('required')">
+          Email is required
+        </mat-error>
+        <mat-error *ngIf="updateProfile.get('email')?.hasError('email')">
+          Email is not valid.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="signin-form-field">
+        <mat-label>Mobile Number</mat-label>
+        <input
+          matInput
+          formControlName="mobileNumber"
+          placeholder="mobileNumber"
+          type="text"
+          class="mobileNumber"
+        />
+
+        <mat-error
+          *ngIf="updateProfile.get('mobileNumber')?.hasError('required')"
+        >
+          Mobile Number is required
+        </mat-error>
+        <mat-error
+          *ngIf="updateProfile.get('mobileNumber')?.hasError('pattern')"
+        >
+          Mobile Number is not Valid
+        </mat-error>
+      </mat-form-field>
+      <button
+        type="submit"
+        color="primary"
+        mat-raised-button
+        class="create-button"
+        [disabled]="!updateProfile.valid"
+      >
+        Update
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,156 @@
+<div class="container">
+  <div class="heading">Restaurant Information</div>
+  <div class="form-one">
+    <div class="form-heading">Restaurant details</div>
+    <div class="sub-heading">Name, address and location</div>
+    <div class="form-container">
+      <form [formGroup]="addressForm">
+        <mat-form-field appearance="outline">
+          <mat-label>Restaurant name</mat-label>
+          <input
+            matInput
+            placeholder="Restaurant name"
+            formControlName="name"
+          />
+          <mat-error *ngIf="addressForm.get('name')?.hasError('required')">
+            Please enter a Restaurant Name.
+          </mat-error>
+        </mat-form-field>
+        <div class="row-one">
+          <mat-form-field appearance="outline" class="house-no">
+            <mat-label>House Number</mat-label>
+            <input
+              matInput
+              placeholder="House Number"
+              formControlName="houseNumber"
+            />
+            <mat-error
+              *ngIf="addressForm.get('houseNumber')?.hasError('required')"
+            >
+              Please enter the house number
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="locality">
+            <mat-label>Locality</mat-label>
+            <input matInput placeholder="Locality" formControlName="locality" />
+            <mat-error
+              *ngIf="addressForm.get('locality')?.hasError('required')"
+            >
+              Please enter the locality
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="city">
+            <mat-label>City</mat-label>
+            <input matInput placeholder="City" formControlName="city" />
+            <mat-error *ngIf="addressForm.get('city')?.hasError('required')">
+              Please enter a city
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row-two">
+          <mat-form-field appearance="outline">
+            <mat-label>State</mat-label>
+            <input matInput placeholder="State" formControlName="state" />
+            <mat-error *ngIf="addressForm.get('state')?.hasError('required')">
+              Please enter a state.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Pincode</mat-label>
+            <input matInput placeholder="Pincode" formControlName="pincode" />
+            <mat-error *ngIf="addressForm.get('pincode')?.hasError('required')">
+              Please enter the pincode.
+            </mat-error>
+            <mat-error *ngIf="addressForm.get('pincode')?.hasError('pattern')">
+              Pincode must contain digits and should be of 6 digits.
+            </mat-error>
+            <mat-error
+              *ngIf="addressForm.get('pincode')?.hasError('minlength')"
+            >
+              Pincode must contain atleast six digits.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <button
+          mat-flat-button
+          color="primary"
+          class="location-btn"
+          (click)="detectLocation()"
+        >
+          Detect Location
+        </button>
+        <div
+          id="map"
+          *ngIf="latitude !== 0 && longitude !== 0"
+          draggable="false"
+        ></div>
+        <mat-form-field appearance="outline" class="location latitude">
+          <mat-label>Latitude</mat-label>
+          <input
+            matInput
+            placeholder="Latitude"
+            [value]="addressForm.value.latitude"
+            formControlName="latitude"
+          />
+          <!-- <mat-hint>
+            {{ addressForm.value.latitude }}
+          </mat-hint> -->
+          <mat-error *ngIf="addressForm.get('latitude')?.hasError('required')">
+            Latitude value cannot be empty
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="location longitude">
+          <mat-label>Longitude</mat-label>
+          <input
+            matInput
+            placeholder="Longitude"
+            [value]="addressForm.value.longitude"
+            [formControlName]="longitude"
+          />
+          <mat-error *ngIf="addressForm.get('longitude')?.hasError('required')">
+            Longitude value cannot be empty
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+  <div class="form-two">
+    <div class="form-heading">Contact number at restaurant</div>
+    <div class="sub-heading">
+      Your customers will call on this number for general enquiries
+    </div>
+    <div class="form-container">
+      <form [formGroup]="contactDetailsForm" class="contact-form">
+        <mat-form-field appearance="outline" class="mobile-number-field">
+          <mat-label>Mobile number at restaurant</mat-label>
+          <input
+            matInput
+            placeholder="Mobile number at restaurant"
+            formControlName="mobileNumber"
+          />
+          <mat-error
+            *ngIf="contactDetailsForm.get('mobileNumber')?.hasError('required')"
+          >
+            Mobile Number is required
+          </mat-error>
+          <mat-error
+            *ngIf="contactDetailsForm.get('mobileNumber')?.hasError('pattern')"
+          >
+            Mobile Number is not Valid
+          </mat-error>
+        </mat-form-field>
+
+        <button
+          mat-flat-button
+          color="primary"
+          class="submit-btn"
+          (click)="onSubmit()"
+          type="submit"
+          [disabled]="!addressForm.valid || !contactDetailsForm.valid"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

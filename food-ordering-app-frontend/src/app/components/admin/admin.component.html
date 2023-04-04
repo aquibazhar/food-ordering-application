@@ -1,0 +1,76 @@
+<div class="outer-container">
+  <div class="admin-container">
+    <div class="admin-header"><app-admin-header></app-admin-header></div>
+  </div>
+  <div class="log-in" *ngIf="!isLoggedIn">
+    <div class="container">
+      <div mat-dialog-title class="heading">
+        <span class="signin-heading">Admin Login</span>
+      </div>
+      <div class="center">
+        <form [formGroup]="adminCredentials" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="outline" class="signin-form-field">
+            <mat-label>Enter your email</mat-label>
+            <input
+              matInput
+              formControlName="email"
+              placeholder="Enter your email"
+              type="text"
+              class="email"
+            />
+            <mat-icon matSuffix>person</mat-icon>
+            <mat-error
+              *ngIf="adminCredentials.get('email')?.hasError('required')"
+            >
+              Email is required
+            </mat-error>
+            <mat-error *ngIf="adminCredentials.get('email')?.hasError('email')">
+              Email is not valid.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="signin-form-field">
+            <mat-label>Enter your Password</mat-label>
+            <input
+              matInput
+              formControlName="password"
+              placeholder="Enter your Password"
+              type="password"
+              class="password"
+            />
+            <mat-icon matSuffix>lock</mat-icon>
+            <mat-error
+              *ngIf="(adminCredentials.controls['password'].touched || adminCredentials.controls['password'].dirty) && adminCredentials.controls['password'].errors?.['required']"
+            >
+              Password is mandatory.
+            </mat-error>
+          </mat-form-field>
+          <button
+            [disabled]="!adminCredentials.valid"
+            type="submit"
+            color="primary"
+            mat-raised-button
+            class="create-button"
+          >
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="lower-container" *ngIf="isLoggedIn">
+    <mat-tab-group [backgroundColor]="'primary'">
+      <mat-tab label="Approve New Restaurants"
+        ><app-admin-approval-tab
+          [restaurants]="restaurants"
+          (onApproval)="changeApprovalStatus($event)"
+        ></app-admin-approval-tab
+      ></mat-tab>
+      <mat-tab label="Manage Restaurants"
+        ><app-admin-manage-tab
+          [restaurants]="restaurants"
+          (unlist)="changeApprovalStatus($event)"
+        ></app-admin-manage-tab
+      ></mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

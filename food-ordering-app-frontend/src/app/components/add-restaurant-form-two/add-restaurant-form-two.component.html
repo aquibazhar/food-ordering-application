@@ -1,0 +1,144 @@
+<div class="container">
+  <div class="heading">Restaurant Type & Timings</div>
+  <div class="form-one">
+    <div class="form-heading">Type of cuisines</div>
+    <div class="sub-heading">
+      Select options which best describe food your serve
+    </div>
+    <div class="form-container">
+      <div class="selected-cuisine" *ngIf="selectedCuisineTypes.length > 0">
+        <div class="heading">Selected:</div>
+        <div class="chips">
+          <mat-chip-grid #chipGrid>
+            <mat-chip-row
+              *ngFor="let selectedCuisine of selectedCuisineTypes"
+              (removed)="remove(selectedCuisine)"
+            >
+              {{ selectedCuisine }}
+              <button
+                matChipRemove
+                [attr.aria-label]="'remove ' + selectedCuisine"
+              >
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip-row>
+          </mat-chip-grid>
+        </div>
+      </div>
+
+      <div class="search-cuisine" *ngIf="maxSelections < 5">
+        <mat-form-field class="example-form-field" appearance="outline">
+          <mat-label>Search cuisine types</mat-label>
+          <input matInput type="text" [(ngModel)]="searchInput" />
+          <button
+            *ngIf="searchInput"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="searchInput = ''"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <div class="select-five" *ngIf="selectedCuisineTypes.length < 5">
+        You can select atmost five cuisine types.
+      </div>
+      <div class="checkbox-container" *ngIf="maxSelections < 5">
+        <div class="cuisine" *ngFor="let cuisineType of cuisineTypes">
+          <mat-checkbox
+            class="cuisine-checkbox"
+            [checked]="selectedCuisineTypes.includes(cuisineType)"
+            [value]="cuisineType"
+            *ngIf="cuisineType | searchCompare : searchInput"
+            (change)="
+              onCuisineTypeSelectionChange($event.source.value, $event.checked)
+            "
+          >
+            {{ cuisineType }}
+          </mat-checkbox>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-three">
+    <div class="form-heading">Restaurant image</div>
+    <div class="sub-heading">
+      Please upload atleast one facade shot (picture of the restaurant front)
+    </div>
+    <div class="form-container">
+      <div class="upload-image">
+        <app-upload-image (imageUploaded)="onImageUpload($event)">
+        </app-upload-image>
+      </div>
+    </div>
+  </div>
+  <div class="form-two">
+    <div class="form-heading">Restaurant operational hours</div>
+    <div class="sub-heading">Mark restaurant opening and closing hours</div>
+    <div class="form-container">
+      <form [formGroup]="timingsForm" (ngSubmit)="onSubmit()">
+        <div class="timings-form">
+          <div class="opens-at">
+            <div class="form-field-heading">Opens At</div>
+            <mat-form-field appearance="outline">
+              <mat-label>-- : -- --</mat-label>
+              <mat-select
+                formControlName="opensAt"
+                required
+                (selectionChange)="onOpensAtChange()"
+              >
+                <mat-option *ngFor="let time of times" [value]="time">
+                  {{ time }}
+                </mat-option>
+              </mat-select>
+              <mat-icon matSuffix>schedule</mat-icon>
+              <mat-error
+                *ngIf="timingsForm.get('opensAt')?.hasError('required')"
+                >Please select the restaurant opening time.</mat-error
+              >
+            </mat-form-field>
+          </div>
+          <div class="closes-at">
+            <div class="form-field-heading">Closes At</div>
+            <mat-form-field appearance="outline">
+              <mat-label>-- : -- --</mat-label>
+              <mat-select
+                formControlName="closesAt"
+                required
+                appTimeValidator
+                [opensAt]="opensAt"
+              >
+                <mat-option *ngFor="let time of times" [value]="time">
+                  {{ time }}
+                </mat-option>
+              </mat-select>
+              <mat-icon matSuffix>schedule</mat-icon>
+              <mat-error
+                *ngIf="timingsForm.get('closesAt')?.hasError('required')"
+                >Please select the restaurant closing time.</mat-error
+              >
+              <mat-error
+                *ngIf="(timingsForm.controls['closesAt'].touched || timingsForm.controls['closesAt'].dirty) && timingsForm.controls['closesAt'].errors?.['validateTime']"
+                >Time Validation.</mat-error
+              >
+            </mat-form-field>
+          </div>
+          <button
+            class="submit-btn"
+            mat-flat-button
+            color="primary"
+            type="submit"
+            [disabled]="
+              timingsForm.valid === false ||
+              selectedCuisineTypes.length < 0 ||
+              restaurantImage == ''
+            "
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

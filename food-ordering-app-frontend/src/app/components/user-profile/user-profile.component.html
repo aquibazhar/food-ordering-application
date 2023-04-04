@@ -1,0 +1,50 @@
+<app-restaurant-dashboard-header></app-restaurant-dashboard-header>
+<div class="container">
+  <div class="upper-container">
+    <div class="left">
+      <div class="user-icon">
+        <mat-icon>account_circle</mat-icon>
+      </div>
+      <div class="user-details">
+        <div class="full-name">{{ user.fullName }}</div>
+        <div class="city-info">
+          <div class="location-icon">
+            <mat-icon>location_on</mat-icon>
+          </div>
+          <div class="city-name">{{ userAddresses[0].city }}</div>
+        </div>
+      </div>
+      <div class="overlay-1"></div>
+      <div class="overlay-2"></div>
+    </div>
+    <div class="right">
+      <div class="edit-profile-button">
+        <button
+          class="edit-btn"
+          mat-flat-button
+          color="primary"
+          (click)="openUpdateProfileDialog()"
+        >
+          <mat-icon>edit_square</mat-icon>
+          <span class="button-text"> Edit Profile </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="lower-container">
+    <mat-tab-group [backgroundColor]="'primary'">
+      <mat-tab label="My addresses"
+        ><app-user-addresses
+          [userEmail]="user.email"
+          [userId]="user.id"
+        ></app-user-addresses
+      ></mat-tab>
+      <mat-tab label="Order History">
+        <app-order-history></app-order-history>
+      </mat-tab>
+      <mat-tab label="Change password">
+        <app-change-password></app-change-password
+      ></mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="card-container">
+    <div class="inner-container" *ngFor="let restaurant of restaurants">
+      <div class="card" matRipple routerLink="/order/{{ restaurant.id }}">
+        <div class="card-image">
+          <img
+            src="{{ restaurant.image }}"
+            alt="{{ restaurant.name }}"
+            class="card-img"
+          />
+          <div class="distance">
+            {{ restaurantDistanceMap.get(restaurant.id) }} min
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="heading">{{ restaurant.name }}</div>
+          <div class="sub-heading">
+            {{ restaurant.description | cuisineSeparator }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

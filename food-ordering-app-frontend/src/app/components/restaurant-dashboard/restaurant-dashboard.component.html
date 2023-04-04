@@ -1,0 +1,22 @@
+<app-restaurant-dashboard-header></app-restaurant-dashboard-header>
+<div class="container">
+  <app-restaurant-dashboard-top
+    [restaurant]="restaurant"
+    parentComponent="dashboard"
+  ></app-restaurant-dashboard-top>
+  <!-- <app-restaurant-dashboard-bottom></app-restaurant-dashboard-bottom> -->
+  <div class="bottom">
+    <mat-tab-group [backgroundColor]="'primary'">
+      <mat-tab label="Add Menu Items">
+        <div class="add-menu-items">
+          <app-add-restaurant-form-three
+            parentComponent="dashboard"
+          ></app-add-restaurant-form-three>
+        </div>
+      </mat-tab>
+      <mat-tab label="Pending Orders"
+        ><app-pending-orders></app-pending-orders
+      ></mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

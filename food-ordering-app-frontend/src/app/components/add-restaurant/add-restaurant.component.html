@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="header">
+    <div class="app-name" routerLink="/home">
+      <div class="app-title">foody</div>
+      <div class="app-subtitle">for business</div>
+    </div>
+    <span class="header-spacer"></span>
+    <div class="buttons">
+      <button mat-button class="headers order-food" routerLink="/home">
+        Order Food
+      </button>
+      <button
+        mat-button
+        class="headers rightmost-header account-btn"
+        [matMenuTriggerFor]="menu"
+        *ngIf="isLoggedIn"
+      >
+        <mat-icon class="account-icon">account_circle</mat-icon>
+        <span class="user-firstname">{{ fullName.split(" ")[0] }}</span>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <span>Profile</span>
+        </button>
+        <button mat-menu-item>
+          <span>Settings</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <span>Log out</span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+  <div class="tabs">
+    <mat-tab-group [selectedIndex]="selectedTab">
+      <mat-tab label="Restaurant Information">
+        <app-add-restaurant-form-one
+          (formGroupOne)="onFormOne($event)"
+          (formGroupTwo)="onFormTwo($event)"
+        ></app-add-restaurant-form-one>
+      </mat-tab>
+      <mat-tab label="Restaurant Type & Timings"
+        ><app-add-restaurant-form-two
+          (timingFormGroup)="onFinalSubmit($event)"
+        ></app-add-restaurant-form-two>
+      </mat-tab>
+      <mat-tab label="Add Menu items"
+        ><app-add-restaurant-form-three
+          [categories]="categories"
+          [restaurantId]="restaurantId"
+        ></app-add-restaurant-form-three
+      ></mat-tab>
+    </mat-tab-group>
+  </div>
+  <div class="nav-buttons">
+    <div class="previous">
+      <button
+        mat-button
+        (click)="previousTab()"
+        *ngIf="selectedTab > 0"
+        class="previous-btn"
+      >
+        Previous
+      </button>
+    </div>
+    <span class="nav-spacer"></span>
+    <!-- <div class="next">
+      <button
+        mat-button
+        (click)="nextTab()"
+        *ngIf="selectedTab < 2"
+        class="next-btn"
+      >
+        Next
+      </button>
+    </div> -->
+  </div>
+</div>

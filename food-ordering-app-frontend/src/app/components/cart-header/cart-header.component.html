@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="header">
+    <div class="app-title" routerLink="/home">foody</div>
+    <span class="header-spacer"></span>
+    <div class="buttons">
+      <button
+        mat-button
+        class="headers login-btn"
+        (click)="openSigninDialog()"
+        *ngIf="!isLoggedIn"
+      >
+        Login
+      </button>
+      <button
+        mat-button
+        class="headers signup-btn"
+        (click)="openSignUpDialog()"
+        *ngIf="!isLoggedIn"
+      >
+        Create Account
+      </button>
+      <button
+        mat-button
+        class="headers rightmost-header account-btn"
+        [matMenuTriggerFor]="menu"
+        *ngIf="isLoggedIn"
+      >
+        <mat-icon class="account-icon">account_circle</mat-icon>
+        <span class="user-firstname">Aquib</span>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/user-profile">
+          <span>Profile</span>
+        </button>
+        <button
+          *ngIf="role === 'restaurant'"
+          mat-menu-item
+          routerLink="/partner-with-us/restaurant-dashboard"
+        >
+          <span>Restaurant Dashboard</span>
+        </button>
+        <button mat-menu-item>
+          <span>Settings</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <span>Log out</span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+</div>

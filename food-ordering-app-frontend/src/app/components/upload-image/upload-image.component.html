@@ -1,0 +1,29 @@
+<div class="container">
+  <ngx-file-drop
+    dropZoneLabel="Drop files here"
+    (onFileDrop)="dropped($event)"
+    (onFileOver)="fileOver($event)"
+    (onFileLeave)="fileLeave($event)"
+    dropZoneClassName="drop-zone"
+    contentClassName="drop-files-here"
+    class="drop-zone"
+  >
+    <ng-template
+      ngx-file-drop-content-tmp
+      let-openFileSelector="openFileSelector"
+    >
+      <div class="top-text">
+        <div class="drag-text">Drag & Drop to upload or</div>
+        <button type="button" (click)="openFileSelector()" class="browse-btn">
+          Browse
+        </button>
+      </div>
+      <div class="center" (click)="openFileSelector()">
+        <div class="camera-icon">
+          <mat-icon>add_a_photo</mat-icon>
+        </div>
+        <div class="center-text">Add photo</div>
+      </div>
+    </ng-template>
+  </ngx-file-drop>
+</div>

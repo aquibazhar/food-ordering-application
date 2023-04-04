@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="order-heading">Order Online</div>
+  <div class="inner-container">
+    <div class="left">
+      <mat-nav-list #categoryList>
+        <a
+          matRipple
+          mat-list-item
+          *ngFor="let c of categories"
+          [class.selected]="c.category === selectedCategory"
+          (click)="onCategoryClick(c.category)"
+        >
+          <div class="list-content">{{ c.category }} ({{ c.frequency }})</div>
+        </a>
+      </mat-nav-list>
+    </div>
+    <div class="right">
+      <div class="right-top">
+        <div class="heading">Order Online</div>
+        <span class="right-spacer"></span>
+        <div class="search">
+          <mat-form-field class="search-form-field" appearance="outline">
+            <mat-label>Search menu items</mat-label>
+            <input
+              matInput
+              type="text"
+              [(ngModel)]="searchInput"
+              (change)="onSearchChange()"
+            />
+            <button
+              *ngIf="searchInput"
+              matSuffix
+              mat-icon-button
+              aria-label="Clear"
+              (click)="searchInput = ''"
+            >
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="right-bottom" *ngFor="let categoryFood of categoryFoodItems">
+        <div
+          class="food-type"
+          [id]="categoryFood.category.split(' ').join('')"
+          *ngIf="!emptyList"
+        >
+          <div class="food-type-name">{{ categoryFood.category }}</div>
+          <div class="menu-items">
+            <app-menu-item
+              parentComponent="order"
+              [foodItems]="
+                categoryFood.foodItem | filterFoodItems : searchInput
+              "
+              (cartChanged)="onCartChange()"
+              [searchInput]="searchInput"
+            ></app-menu-item>
+          </div>
+          <mat-divider class="menu-divider"></mat-divider>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cart-container" *ngIf="totalCartQuantity === 1">
+    <div class="cart-icon">
+      <mat-icon>shopping_bag</mat-icon>
+    </div>
+    <span class="cart-spacer"></span>
+    <div class="cart-details">1 Item Added</div>
+    <span class="cart-spacer"></span>
+    <div class="next-button">
+      <button class="next-btn" mat-flat-button color="primary">Next</button>
+    </div>
+  </div>
+  <div class="cart-container" *ngIf="totalCartQuantity > 0">
+    <div class="cart-icon">
+      <mat-icon>shopping_bag</mat-icon>
+    </div>
+    <span class="cart-spacer"></span>
+    <div class="cart-details">{{ totalCartQuantity }} Items Added</div>
+    <span class="cart-spacer"></span>
+    <div class="next-button">
+      <button
+        class="next-btn"
+        mat-flat-button
+        color="primary"
+        routerLink="/cart/{{ restaurantId }}"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+</div>

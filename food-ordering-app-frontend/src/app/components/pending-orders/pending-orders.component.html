@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="inner-container">
+    <div class="order-card" *ngFor="let order of orders; let i = index">
+      <div class="inner-order-card" *ngIf="order.status !== 'Delivered'">
+        <div class="order-number">Order {{ order.id }}</div>
+        <div class="food-items">
+          <div class="food-item" *ngFor="let item of order.orderItems">
+            {{ item.quantity }} x {{ item.foodItem.food.foodName }}
+          </div>
+        </div>
+        <div class="customer-name">{{ order.user.fullName }}</div>
+        <div class="user-address">
+          {{ order.userAddress.houseNumber }}, {{ order.userAddress.locality }},
+          {{ order.userAddress.city }}, {{ order.userAddress.state }},
+          {{ order.userAddress.pincode }}
+        </div>
+        <div class="accept-reject" *ngIf="order.status === 'Ordered'">
+          <div class="accept-button">
+            <button
+              mat-flat-button
+              color="primary"
+              class="accept-btn"
+              (click)="changeOrderStatus(order.id, 'Preparing')"
+            >
+              Accept
+            </button>
+          </div>
+          <div class="reject-button">
+            <button mat-flat-button color="warn" class="reject-btn">
+              Reject
+            </button>
+          </div>
+        </div>
+        <div class="show-status" *ngIf="order.status !== 'Ordered'">
+          <mat-form-field appearance="outline">
+            <mat-label>Order Status</mat-label>
+            <mat-select
+              [(ngModel)]="order.status"
+              name="food"
+              (selectionChange)="changeOrderStatus(order.id, $event.value)"
+            >
+              <mat-option *ngFor="let status of orderStatus" [value]="status">
+                {{ status }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

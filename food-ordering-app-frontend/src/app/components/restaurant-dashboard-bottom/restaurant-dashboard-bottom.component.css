@@ -1,0 +1,86 @@
+a.selected {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 240, 242, 1) 100%
+  );
+  color: #f1626f;
+  border-right: #f1626f 2px solid;
+}
+
+a:hover {
+  background-color: transparent !important;
+}
+
+a {
+  font-weight: 500 !important;
+}
+
+a.selected .list-content {
+  color: #f1626f;
+}
+
+a.selected ::ng-deep .mat-ripple-element {
+  background-color: #fff0f2 !important;
+  z-index: -1;
+}
+
+.container {
+  margin-top: 20px;
+}
+
+.order-heading {
+  color: #f1626f;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.inner-container {
+  border-top: #f1626f solid 2px;
+  display: flex;
+}
+
+.left {
+  margin-top: 10px;
+  width: 25%;
+  border-right: 2px solid lightgrey;
+}
+
+.mdc-list {
+  padding: 0px !important;
+}
+
+.right {
+  width: 75%;
+  /* text-align: center; */
+  overflow-y: scroll;
+}
+
+.right-top {
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.right-spacer {
+  flex: 1 1 auto;
+}
+
+.right-top .heading {
+  font-size: 25px;
+}
+
+.search-form-field {
+  /* font-size: 20px; */
+  width: 250px;
+}
+
+.right-bottom {
+  margin-left: 20px;
+}
+
+.food-type {
+  margin: 20px 0px;
+  font-size: 25px;
+}

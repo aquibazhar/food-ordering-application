@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="inner-container">
+    <div class="address-container">
+      <div class="location-icon">
+        <mat-icon>location_on</mat-icon>
+      </div>
+      <div class="selected-address">
+        Delivery at
+        <span class="address"
+          >{{ defaultAddress.houseNumber }}, {{ defaultAddress.locality }},
+          {{ defaultAddress.city }}, {{ defaultAddress.state }},
+          {{ defaultAddress.pincode }}</span
+        >
+      </div>
+      <div class="address-change">
+        <button
+          mat-flat-button
+          class="change-btn"
+          (click)="openSelectAddressDialog()"
+        >
+          Change
+        </button>
+      </div>
+    </div>
+    <div class="place-order-divider"></div>
+    <div class="payment">
+      <div class="payment-method">
+        <div class="row row-1">PAY USING</div>
+        <div class="row row-2">Razor Pay</div>
+      </div>
+      <button
+        mat-flat-button
+        color="primary"
+        class="place-order-btn"
+        (click)="onOrder()"
+      >
+        <div class="place-order">
+          <div class="cost">
+            <div class="total-cost">₹{{ totalCost }}</div>
+            <div class="total">TOTAL</div>
+          </div>
+          <div class="place-order-text">Place Order</div>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>

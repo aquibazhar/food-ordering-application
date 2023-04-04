@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="heading">Order History</div>
+  <div class="inner-container">
+    <div class="order-card" *ngFor="let order of orders">
+      <div class="top">
+        <div class="restaurant-image">
+          <img
+            src="{{ order.restaurantDetails.image }}"
+            alt=""
+            class="restaurant-img"
+          />
+        </div>
+        <div class="restaurant-details">
+          <div class="restaurant-name">{{ order.restaurantDetails.name }}</div>
+          <div class="restaurant-address">
+            {{ order.restaurantDetails.address.locality }},
+            {{ order.restaurantDetails.address.city }},
+            {{ order.restaurantDetails.address.state }}
+          </div>
+        </div>
+        <div class="order-status">{{ order.status }}</div>
+      </div>
+      <div class="custom-divider"></div>
+      <div class="bottom">
+        <div class="order-number-section">
+          <div class="order-number-text order-headings">ORDER NUMBER</div>
+          <div class="order-number order-values">{{ order.id }}</div>
+        </div>
+        <div class="total-amount-section">
+          <div class="total-amount-text order-headings">TOTAL AMOUNT</div>
+          <div class="total-amount order-values">₹{{ order.price }}</div>
+        </div>
+        <div class="items-section">
+          <div class="items-text order-headings">ITEMS</div>
+          <div class="items order-values">
+            <span
+              class="order-value"
+              *ngFor="let item of order.orderItems; let last = last"
+            >
+              {{ item.quantity }} x {{ item.foodItem.food.foodName }}
+              {{ last ? "" : ", " }}
+            </span>
+          </div>
+        </div>
+        <div class="ordered-on-section">
+          <div class="ordered-on-text order-headings">ORDERED ON</div>
+          <div class="ordered-on order-values">
+            {{ order.orderedOn | date }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

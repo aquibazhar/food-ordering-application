@@ -1,0 +1,148 @@
+<div class="container">
+  <div class="heading" *ngIf="parentComponent === 'form-three'">
+    Add menu items
+  </div>
+  <div class="form-one" *ngIf="parentComponent === 'form-three'">
+    <div class="form-heading">Menu item</div>
+    <div class="sub-heading">Add food items available in your restaurant</div>
+    <div class="form-container">
+      <form [formGroup]="foodItemForm" (ngSubmit)="addFoodItem()">
+        <div class="row">
+          <mat-form-field appearance="outline"
+            ><mat-label>Enter the food item name</mat-label
+            ><input
+              matInput
+              placeholder="Food Name"
+              formControlName="foodName"
+            />
+            <mat-error
+              *ngIf="
+                foodItemForm.get('foodName')?.hasError('required') &&
+                foodItemForm.get('foodName')?.touched
+              "
+              >Food name is required</mat-error
+            ></mat-form-field
+          >
+          <mat-form-field appearance="outline">
+            <mat-label>Select meal type</mat-label>
+            <mat-select formControlName="mealType" required>
+              <mat-option *ngFor="let mealType of mealTypes" [value]="mealType">
+                {{ mealType }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="
+                foodItemForm.get('mealType')?.hasError('required') &&
+                foodItemForm.get('mealType')?.touched
+              "
+              >Please select a meal type</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <mat-form-field appearance="outline">
+          <mat-label>Select food category</mat-label>
+          <mat-select formControlName="category" required>
+            <mat-option *ngFor="let category of categories" [value]="category">
+              {{ category }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="
+              foodItemForm.get('category')?.hasError('required') &&
+              foodItemForm.get('category')?.touched
+            "
+            >Please select a food category</mat-error
+          >
+        </mat-form-field>
+        <div class="row">
+          <mat-form-field appearance="outline"
+            ><mat-label>Enter Price for this food item.</mat-label
+            ><input matInput placeholder="price" formControlName="price" />
+            <mat-error
+              *ngIf="
+                foodItemForm.get('price')?.hasError('required') &&
+                foodItemForm.get('price')?.touched
+              "
+            >
+              Price is required</mat-error
+            >
+            <mat-error
+              *ngIf="
+                foodItemForm.get('price')?.hasError('pattern') &&
+                foodItemForm.get('price')?.touched
+              "
+            >
+              Price is invalid</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <mat-form-field appearance="outline"
+          ><mat-label>Enter Food Description</mat-label
+          ><textarea
+            matInput
+            placeholder="description"
+            formControlName="description"
+          ></textarea>
+          <mat-error
+            *ngIf="
+              foodItemForm.get('description')?.hasError('required') &&
+              foodItemForm.get('description')?.touched
+            "
+            >Description is required</mat-error
+          ></mat-form-field
+        >
+        <div class="upload-image">
+          <app-upload-image (imageUploaded)="onImageUpload($event)">
+          </app-upload-image>
+        </div>
+        <div class="submit">
+          <button
+            class="submit-btn"
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!foodItemForm.valid"
+          >
+            <mat-icon>add</mat-icon>
+            <span> Add to menu</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="menu-list" *ngIf="foodItems.length !== 0">
+    <div class="form-heading">Restaurant menu items</div>
+    <div class="sub-heading">
+      These are the food items available in your restaurant
+    </div>
+    <div class="menu-container">
+      <app-menu-item
+        [foodItems]="foodItems"
+        (onDelete)="onDelete($event)"
+        (emptyList)="onEmptyList()"
+        [parentComponent]="parentComponent"
+      ></app-menu-item>
+    </div>
+  </div>
+  <div class="footer-buttons" *ngIf="foodItems.length !== 0">
+    <button
+      mat-flat-button
+      class="footer-btn add-more-btn"
+      color="primary"
+      (click)="scrollToTop()"
+      (click)="changeParentValue()"
+    >
+      Add more items
+    </button>
+    <button
+      mat-flat-button
+      class="footer-btn footer-submit-btn"
+      color="primary"
+      routerLink="/partner-with-us/restaurant-dashboard"
+      *ngIf="parentComponent === 'form-three'"
+      (click)="onSubmit()"
+    >
+      Submit
+    </button>
+  </div>
+</div>
