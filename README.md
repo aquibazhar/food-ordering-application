@@ -1,6 +1,16 @@
 <h1 align="center">Foody</h1>
 Foody is a food ordering web application built using Angular and Spring Boot, utilizing Microservices architecture.
 
+## Demo
+
+### Customer POV
+
+https://user-images.githubusercontent.com/84010175/230899407-1949dc8c-2ba5-4dd5-a9b6-78a0a3a85dbd.mp4
+
+### Restaurant Owner POV
+
+https://user-images.githubusercontent.com/84010175/230899487-009a82ef-01c8-4b14-98f3-8eeb43bd4a08.mp4
+
 ## Features 🚀
 
 - User can view all restaurants within a 20-kilometer radius.
